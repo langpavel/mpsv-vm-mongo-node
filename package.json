@@ -1,0 +1,23 @@
+{
+  "name": "changejob.cz",
+  "description": "changejob.cz website",
+  "version": "0.0.1",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pavel Lang <langpavel@phpskelet.org>",
+  "license": "Proprietary",
+  "dependencies": {
+    "baucis": "~0.6.25",
+    "connect": "~2.11.2",
+    "debug": "~0.7.4",
+    "express": "~3.4.6",
+    "jade": "~0.35.0",
+    "less-middleware": "~0.1.14",
+    "mongoose": "~3.8.1",
+    "redis": "~0.9.1"
+  }
+}
