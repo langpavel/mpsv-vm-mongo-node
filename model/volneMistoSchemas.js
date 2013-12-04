@@ -173,16 +173,6 @@ schemas.VolneMisto = Schema({
 })
 
 
-var models = {};
-Object.keys(schemas).map(function(schemaName) {
-	models[schemaName] = mongoose.model(schemaName, schemas[schemaName]);
-});
-
-
-
-module.exports = {
-	models: models,
-	schemas: schemas
-};
+module.exports = schemas;
 
 
