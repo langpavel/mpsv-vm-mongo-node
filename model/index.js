@@ -30,4 +30,5 @@ Object.keys(schematas).forEach(function(schemasName) {
 
 module.exports = {
 	connection: db,
+	models: models
 };

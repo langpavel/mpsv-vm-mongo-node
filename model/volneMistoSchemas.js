@@ -7,14 +7,17 @@ var Schema = mongoose.Schema;
 var CiselnikSchema = function(proto) {
 	proto = proto || {};
 	proto.kod = proto.kod || { type:Number, required: true, unique: true };
-	proto.nazev = proto.nazev || { type:Number, unique: true}
+	proto.nazev = proto.nazev || { type:String };
 	return Schema(proto);
 };
 
 
 var schemas = {
 	Dovednost: CiselnikSchema(),
-	Jazyk: CiselnikSchema(),
+	Jazyk: Schema({
+		iso: { type: String, required: true, unique: true },
+		name: { type: String, required: true },
+	}),
 	MinVzdelani: CiselnikSchema(),
 	Obor: CiselnikSchema(),
 	Povolani: CiselnikSchema(),
@@ -146,12 +149,12 @@ schemas.VolneMisto = Schema({
 		popis: String,
 	},
 
-	jazyk: {
+	jazyk: [{
 		// Jazyk
 		ref: Schema.Types.ObjectId,
-		uroven: [String],
+		uroven: String,
 		popis: String,
-	},
+	}],
 
 	vzdelani: {
 		// Vzdelani
