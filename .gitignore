@@ -1,2 +1,16 @@
 node_modules/
-data/mpsv/
+
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.zip
+
+pids
+logs
+results
+build
