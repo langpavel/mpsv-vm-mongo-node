@@ -152,9 +152,6 @@ var trans = {
 }
 
 
-var stack = [{}];
-
-
 xml.on('startElement', function(tagname, attribs) {
 	xmlpath.push(tagname);
 	var path = xmlpath.join('/');

@@ -3,7 +3,7 @@ var xml = require('xml-object-stream');
 var path = require('path');
 var fs = require('fs');
 
-var useRepl = false;
+var useRepl = true;
 var outputJson = './whole/vm20131128.json'; // or false;
 
 var readStream = fs.createReadStream(path.join(__dirname, 'whole', 'vm20131128.xml'));
@@ -23,6 +23,7 @@ var convertValue = function(val, name, target) {
 	//2013-10-30T12:19:38.000Z
 	if (/^\d\d\d\d-\d\d-\d\d(T\d\d:\d\d:\d\d.\d\d\dZ?)?$/.test(val))
 		return new Date(val);
+	return val;
 }
 
 var setText = function(entryName) {
@@ -148,14 +149,14 @@ parser.on('end', function() {
 		fs.writeFileSync(p, json, 'utf-8');
 	}
 	console.log('DONE');
+	if (useRepl) {
+		var repl = require('repl').start({
+			useGlobal: true
+		});
+
+		repl.context.parser = parser;
+		repl.context.volnaMista = volnaMista;
+	}
 })
 
 
-if (useRepl) {
-	var repl = require('repl').start({
-		useGlobal: true
-	});
-
-	repl.context.parser = parser;
-	repl.context.volnaMista = volnaMista;
-}
