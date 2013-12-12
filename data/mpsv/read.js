@@ -16,9 +16,9 @@ var convertDate = function(val) {
 }
 
 var convertValue = function(val, name, target) {
-	if (/^[+-]?\d{1,}$/.test(val))
+	if (/^[+-]?\d+$/.test(val))
 		return parseInt(val, 10);
-	if (/^[+-]?\d+\.\d+$/.test(val))
+	if (/^[+-]?\d*\.\d*$/.test(val))
 		return parseFloat(val);
 	//2013-10-30T12:19:38.000Z
 	if (/^\d\d\d\d-\d\d-\d\d(T\d\d:\d\d:\d\d.\d\d\dZ?)?$/.test(val))
