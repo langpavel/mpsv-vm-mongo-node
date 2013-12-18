@@ -7,7 +7,7 @@ var mongo = require('mongodb');
 var useRepl = true;
 var outputJson = false; // './whole/vm20131128.json'; // or false;
 
-var readStream = fs.createReadStream(path.join(__dirname, 'whole', 'vm20131128.xml'));
+var readStream = fs.createReadStream(path.join(__dirname, 'whole', 'vm20131218.xml'));
 var parser = xml.parse(readStream);
 
 var volnaMista = [];

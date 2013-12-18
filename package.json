@@ -20,6 +20,7 @@
     "mongoose": "~3.8.1",
     "redis": "~0.9.1",
     "xml-stream": "~0.4.3",
-    "xml2js": "~0.4.0"
+    "xml2js": "~0.4.0",
+    "jugglingdb": "~0.2.6"
   }
 }
