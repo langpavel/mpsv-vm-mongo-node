@@ -1,4 +1,4 @@
 #!/bin/sh
 BASEDIR=`dirname "$0"`
 cd "$BASEDIR"
-mongo changejob ./analyze.js
+mongo changejob ./analyze2.js
