@@ -37,6 +37,7 @@ var map = function() {
       } else {
         emit(prefix + '.' + key, {
           types: [typeName],
+          distinct: [val],
           count: 1
         });
       }
@@ -50,13 +51,17 @@ var reduce = function(key, values) {
   var result = [];
   var count = 0;
   var min, max; // undefined, only arrays
+  var distinct = [];
+
   values.forEach(function(val) {
     result = result.concat(val.types);
     count += val.count;
     if (typeof val.min === 'number') {
       if (typeof min === 'undefined' || val.min < min) min = val.min;
       if (typeof max === 'undefined' || val.max > max) max = val.max;
-    } 
+    }
+    if (val.distinct)
+      distinct = Array.unique(distinct.concat(val.distinct));
   });
 
   var result = {
@@ -68,6 +73,9 @@ var reduce = function(key, values) {
     result.min = min;
     result.max = max;
   }
+
+  if (distinct)
+    result.distinct = distinct;
 
   return result;
 };
@@ -84,6 +92,12 @@ result.results.forEach(function(val) {
   if (typeof val.value.min !== 'undefined') {
     print('  min:\t' + val.value.min + '\tmax:\t' + val.value.max);
   }
-  print('  count:\t' + val.value.count);
+  if (val.value.distinct) {
+    if (val.value.distinct.length < 15) {
+      print('  enum:\t"' + val.value.distinct.join('", "') + '"');
+    } else {
+      print('  distinct:\t' + val.value.distinct.length);
+    } 
+  }
 });
 
